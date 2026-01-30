@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kardelen & Peter - Wedding Invitation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500;600&family=Montserrat:wght@300;400&family=Alex+Brush&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #C9A961;
+            --eucalyptus: #8FA f9A0;
+            --dark: #2C2C2C;
+            --cream: #FAF8F5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            position: relative;
+            background: var(--cream);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Background with Nuremberg bridge */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1568084926145-83cc298b3e66?q=80&w=2070');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.08;
+            z-index: 0;
+        }
+
+        /* Language Tabs */
+        .language-tabs {
+            position: relative;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            padding: 0.8rem 0 0 0;
+            background: transparent;
+        }
+
+        .lang-tab {
+            padding: 0.6rem 1.5rem;
+            font-size: clamp(0.8rem, 2.2vw, 0.95rem);
+            font-weight: 300;
+            background: rgba(255, 255, 255, 0.6);
+            color: var(--dark);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .lang-tab:hover {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .lang-tab.active {
+            background: white;
+            border-bottom: 2px solid var(--gold);
+            color: var(--gold);
+        }
+
+        .flag {
+            font-size: 1.1rem;
+        }
+
+        /* Main Content */
+        .main-content {
+            position: relative;
+            z-index: 1;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.8rem;
+            overflow: hidden;
+        }
+
+        /* Card Container */
+        .invitation-card {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            height: 100%;
+            max-height: 650px;
+            background: white;
+            padding: clamp(1.5rem, 3vw, 2.5rem);
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Heart Frame - contains main content */
+        .heart-frame {
+            position: absolute;
+            top: clamp(1rem, 2.5vw, 2rem);
+            left: 50%;
+            transform: translateX(-50%);
+            width: 75%;
+            height: 65%;
+            pointer-events: none;
+        }
+
+        .heart-frame svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Eucalyptus decorations */
+        .eucalyptus {
+            position: absolute;
+            opacity: 0.85;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .eucalyptus.top {
+            top: clamp(0.5rem, 1.5vw, 1.2rem);
+            right: clamp(0.8rem, 2.5vw, 2rem);
+            width: clamp(90px, 16vw, 160px);
+            transform: rotate(-15deg);
+        }
+
+        .eucalyptus.bottom {
+            bottom: clamp(0.8rem, 2vw, 1.5rem);
+            left: clamp(0.5rem, 1.8vw, 1.2rem);
+            width: clamp(90px, 16vw, 160px);
+            transform: rotate(165deg);
+        }
+
+        /* Main Content Area - 80% */
+        .main-area {
+            position: relative;
+            z-index: 3;
+            flex: 80;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        .couple-names {
+            font-family: 'Cormorant', serif;
+            font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+            font-weight: 300;
+            color: var(--dark);
+            margin-bottom: 0.2rem;
+            line-height: 1.05;
+            letter-spacing: clamp(6px, 2vw, 10px);
+            text-transform: uppercase;
+        }
+
+        .divider {
+            font-family: 'Cormorant', serif;
+            font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+            color: var(--gold);
+            margin: 0.1rem 0;
+            font-weight: 300;
+        }
+
+        .tagline {
+            font-family: 'Cormorant', serif;
+            font-size: clamp(0.85rem, 2vw, 1.1rem);
+            font-weight: 300;
+            font-style: italic;
+            color: var(--dark);
+            margin: 0.8rem auto 0 auto;
+            line-height: 1.5;
+            max-width: 620px;
+        }
+
+        /* Bottom Area - 20% */
+        .bottom-area {
+            position: relative;
+            z-index: 3;
+            flex: 20;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-bottom: clamp(0.5rem, 1.5vw, 1rem);
+        }
+
+        /* Locations side by side */
+        .locations-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(1rem, 3vw, 2rem);
+            margin-bottom: clamp(0.5rem, 1.5vw, 1rem);
+        }
+
+        .location-item {
+            text-align: center;
+            font-size: clamp(0.7rem, 1.6vw, 0.85rem);
+            color: var(--dark);
+            line-height: 1.4;
+        }
+
+        .location-title {
+            font-family: 'Cormorant', serif;
+            font-weight: 500;
+            margin-bottom: 0.2rem;
+            font-size: clamp(0.8rem, 1.8vw, 0.95rem);
+            letter-spacing: 0.3px;
+        }
+
+        .location-link {
+            color: var(--dark);
+            text-decoration: underline;
+            text-decoration-color: var(--gold);
+            text-underline-offset: 2px;
+            transition: color 0.3s ease;
+            font-weight: 300;
+        }
+
+        .location-link:hover {
+            color: var(--gold);
+        }
+
+        /* Parents Info */
+        .parents-info {
+            font-size: clamp(0.6rem, 1.4vw, 0.7rem);
+            color: #888;
+            text-align: center;
+            font-weight: 300;
+            line-height: 1.4;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .language-tabs {
+                padding: 0.5rem 0 0 0;
+            }
+
+            .lang-tab {
+                padding: 0.5rem 0.9rem;
+                font-size: 0.75rem;
+            }
+
+            .flag {
+                font-size: 0.95rem;
+            }
+
+            .invitation-card {
+                padding: 1.2rem 0.9rem;
+            }
+
+            .couple-names {
+                letter-spacing: 4px;
+            }
+
+            .heart-frame {
+                width: 80%;
+                height: 60%;
+            }
+
+            .eucalyptus.top,
+            .eucalyptus.bottom {
+                width: clamp(70px, 14vw, 120px);
+            }
+
+            .main-area {
+                padding: 0 0.5rem;
+            }
+
+            .tagline {
+                line-height: 1.4;
+                margin: 0.6rem auto 0 auto;
+            }
+
+            .locations-row {
+                gap: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .lang-tab {
+                padding: 0.45rem 0.7rem;
+                font-size: 0.7rem;
+                gap: 0.3rem;
+            }
+
+            .flag {
+                font-size: 0.85rem;
+            }
+
+            .invitation-card {
+                padding: 1rem 0.7rem;
+            }
+
+            .locations-row {
+                gap: 0.6rem;
+            }
+
+            .heart-frame {
+                width: 83%;
+            }
+        }
+
+        @media (max-height: 700px) {
+            .main-content {
+                padding: 0.5rem;
+            }
+
+            .invitation-card {
+                max-height: 600px;
+            }
+
+            .tagline {
+                margin: 0.5rem auto 0 auto;
+                line-height: 1.4;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+
+    <!-- Language Tabs -->
+    <div class="language-tabs">
+        <button class="lang-tab active" onclick="selectLanguage('tr')" id="tabTr">
+            <span class="flag">🇹🇷</span> TÜRKÇE
+        </button>
+        <button class="lang-tab" onclick="selectLanguage('en')" id="tabEn">
+            <span class="flag">🇬🇧</span> ENGLISH
+        </button>
+        <button class="lang-tab" onclick="selectLanguage('de')" id="tabDe">
+            <span class="flag">🇩🇪</span> DEUTSCH
+        </button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="invitation-card">
+            <!-- Heart Frame -->
+            <div class="heart-frame">
+                <svg viewBox="0 0 500 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Heart shape path -->
+                    <path d="M 250 400 C 250 400 80 280 80 180 C 80 120 120 80 170 80 C 200 80 230 95 250 120 C 270 95 300 80 330 80 C 380 80 420 120 420 180 C 420 280 250 400 250 400 Z" 
+                          stroke="#C9A961" 
+                          stroke-width="2.5" 
+                          fill="none"
+                          stroke-linejoin="round"/>
+                </svg>
+            </div>
+
+            <!-- Eucalyptus Top -->
+            <svg class="eucalyptus top" viewBox="0 0 140 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M70 10 Q75 25 70 35 Q65 25 70 10" fill="#8FA f9A0" opacity="0.5"/>
+                <ellipse cx="58" cy="42" rx="14" ry="20" fill="#A5B8A8" opacity="0.7"/>
+                <ellipse cx="82" cy="48" rx="15" ry="22" fill="#98ADA0" opacity="0.7"/>
+                <path d="M70 35 Q68 55 70 75" stroke="#7A8F82" stroke-width="2.5" fill="none"/>
+                <ellipse cx="60" cy="82" rx="16" ry="23" fill="#8FA f9A0" opacity="0.7"/>
+                <ellipse cx="80" cy="88" rx="14" ry="21" fill="#A5B8A8" opacity="0.7"/>
+                <path d="M70 75 Q72 100 70 125" stroke="#7A8F82" stroke-width="2.5" fill="none"/>
+                <ellipse cx="58" cy="132" rx="15" ry="22" fill="#98ADA0" opacity="0.7"/>
+                <ellipse cx="82" cy="138" rx="16" ry="24" fill="#8FA f9A0" opacity="0.7"/>
+                <path d="M70 125 Q68 155 70 185" stroke="#7A8F82" stroke-width="2.5" fill="none"/>
+                <ellipse cx="60" cy="192" rx="13" ry="19" fill="#A5B8A8" opacity="0.7"/>
+                <ellipse cx="80" cy="196" rx="12" ry="18" fill="#98ADA0" opacity="0.7"/>
+            </svg>
+
+            <!-- Eucalyptus Bottom -->
+            <svg class="eucalyptus bottom" viewBox="0 0 140 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M70 10 Q75 25 70 35 Q65 25 70 10" fill="#8FA f9A0" opacity="0.5"/>
+                <ellipse cx="58" cy="42" rx="14" ry="20" fill="#A5B8A8" opacity="0.7"/>
+                <ellipse cx="82" cy="48" rx="15" ry="22" fill="#98ADA0" opacity="0.7"/>
+                <path d="M70 35 Q68 55 70 75" stroke="#7A8F82" stroke-width="2.5" fill="none"/>
+                <ellipse cx="60" cy="82" rx="16" ry="23" fill="#8FA f9A0" opacity="0.7"/>
+                <ellipse cx="80" cy="88" rx="14" ry="21" fill="#A5B8A8" opacity="0.7"/>
+                <path d="M70 75 Q72 100 70 125" stroke="#7A8F82" stroke-width="2.5" fill="none"/>
+                <ellipse cx="58" cy="132" rx="15" ry="22" fill="#98ADA0" opacity="0.7"/>
+                <ellipse cx="82" cy="138" rx="16" ry="24" fill="#8FA f9A0" opacity="0.7"/>
+            </svg>
+
+            <!-- Main Area (80%) -->
+            <div class="main-area">
+                <h1 class="couple-names">
+                    KARDELEN<br>
+                    <span class="divider">&</span><br>
+                    PETER
+                </h1>
+
+                <p class="tagline" id="tagline"></p>
+            </div>
+
+            <!-- Bottom Area (20%) -->
+            <div class="bottom-area">
+                <!-- Locations Side by Side -->
+                <div class="locations-row">
+                    <div class="location-item">
+                        <div class="location-title" id="kinaTitle"></div>
+                        <div id="kinaDate"></div>
+                        <a href="https://maps.app.goo.gl/z5ibLooEtAcyssDe8" target="_blank" class="location-link">
+                            📍 Arpaköy, Ordu, TR
+                        </a>
+                    </div>
+
+                    <div class="location-item">
+                        <div class="location-title" id="nikahTitle"></div>
+                        <div id="nikahDate"></div>
+                        <a href="https://maps.app.goo.gl/79G1PJUXN3JbXJi59" target="_blank" class="location-link">
+                            📍 Großgründlach, Nürnberg, DE
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Parents Info -->
+                <div class="parents-info">
+                    Kardelen Özyurda • Zinet Özyurda & İsmet Özyurda<br>
+                    Peter Giese • Klaus Giese & Bernadette Giese
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            tr: {
+                tagline: "Farklı diller, aynı kalp. 💛 Yollarımız başka yerlerden başladı ama hikâyemiz ortak bir yerde buluştu. Bu özel günde dünyamızdan bir parça olan sizlerle yan yana olmak istiyoruz 🤍",
+                kinaTitle: "Nişan & Kına",
+                kinaDate: "1 Ağustos 2026",
+                nikahTitle: "Resmi Nikah",
+                nikahDate: "4 Eylül 2026, 11:00"
+            },
+            en: {
+                tagline: "Different languages, one shared heart. 💛 Our paths started in different places, but our story became one. Celebrating this moment with people from all over our world means everything to us 🤍",
+                kinaTitle: "Engagement Party",
+                kinaDate: "August 1st, 2026",
+                nikahTitle: "Civil Wedding",
+                nikahDate: "September 4th, 2026, 11:00 AM"
+            },
+            de: {
+                tagline: "Verschiedene Sprachen, ein gemeinsames Herz. 💛 Unsere Wege begannen an unterschiedlichen Orten, doch unsere Geschichte wurde eine. Diesen Moment mit Menschen aus unserer ganzen Welt zu teilen, macht ihn vollkommen 🤍",
+                kinaTitle: "Verlobungsfeier",
+                kinaDate: "1. August 2026",
+                nikahTitle: "Standesamtliche Trauung",
+                nikahDate: "4. September 2026, 11:00 Uhr"
+            }
+        };
+
+        function selectLanguage(lang) {
+            // Update active tab
+            document.querySelectorAll('.lang-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.getElementById('tab' + lang.charAt(0).toUpperCase() + lang.slice(1)).classList.add('active');
+
+            // Update content
+            const t = translations[lang];
+            document.getElementById('tagline').textContent = t.tagline;
+            document.getElementById('kinaTitle').textContent = t.kinaTitle;
+            document.getElementById('kinaDate').textContent = t.kinaDate;
+            document.getElementById('nikahTitle').textContent = t.nikahTitle;
+            document.getElementById('nikahDate').textContent = t.nikahDate;
+        }
+
+        // Initialize with Turkish
+        selectLanguage('tr');
+    </script>
+</body>
+</html>
