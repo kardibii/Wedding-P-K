@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Kardelen & Peter - Wedding Invitation</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500;600&family=Montserrat:wght@300;400&family=Alex+Brush&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
     <style>
         :root {
             --gold: #C9A961;
@@ -33,7 +33,7 @@
             flex-direction: column;
         }
 
-        /* Background with Nuremberg bridge */
+        /* Background */
         .background {
             position: fixed;
             top: 0;
@@ -54,35 +54,35 @@
             display: flex;
             justify-content: center;
             gap: 0;
-            padding: 0.8rem 0 0 0;
+            padding: 1rem 0 0.5rem 0;
             background: transparent;
         }
 
         .lang-tab {
-            padding: 0.6rem 1.5rem;
-            font-size: clamp(0.8rem, 2.2vw, 0.95rem);
-            font-weight: 300;
-            background: rgba(255, 255, 255, 0.6);
-            color: var(--dark);
+            padding: 0.7rem 1.8rem;
+            font-size: 0.95rem;
+            font-weight: 400;
+            background: transparent;
+            color: #999;
             border: none;
             cursor: pointer;
             transition: all 0.3s ease;
             font-family: 'Montserrat', sans-serif;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
             border-bottom: 2px solid transparent;
             display: flex;
             align-items: center;
-            gap: 0.4rem;
+            gap: 0.5rem;
         }
 
         .lang-tab:hover {
-            background: rgba(255, 255, 255, 0.9);
+            color: var(--dark);
         }
 
         .lang-tab.active {
-            background: white;
-            border-bottom: 2px solid var(--gold);
             color: var(--gold);
+            border-bottom: 2px solid var(--gold);
         }
 
         .flag {
@@ -97,7 +97,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 0.8rem;
+            padding: 1rem;
             overflow: hidden;
         }
 
@@ -105,25 +105,27 @@
         .invitation-card {
             position: relative;
             width: 100%;
-            max-width: 900px;
+            max-width: 1000px;
             height: 100%;
-            max-height: 650px;
+            max-height: 700px;
             background: white;
-            padding: clamp(1.5rem, 3vw, 2.5rem);
             display: flex;
             flex-direction: column;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+            align-items: center;
+            justify-content: space-between;
+            padding: 3rem 2rem 2rem 2rem;
         }
 
-        /* Heart Frame - contains main content */
+        /* Heart Frame */
         .heart-frame {
             position: absolute;
-            top: clamp(1rem, 2.5vw, 2rem);
+            top: 50%;
             left: 50%;
-            transform: translateX(-50%);
-            width: 75%;
-            height: 65%;
+            transform: translate(-50%, -50%);
+            width: 65%;
+            height: 75%;
             pointer-events: none;
+            opacity: 0.3;
         }
 
         .heart-frame svg {
@@ -134,107 +136,108 @@
         /* Eucalyptus decorations */
         .eucalyptus {
             position: absolute;
-            opacity: 0.85;
+            opacity: 0.75;
             pointer-events: none;
             z-index: 2;
         }
 
         .eucalyptus.top {
-            top: clamp(0.5rem, 1.5vw, 1.2rem);
-            right: clamp(0.8rem, 2.5vw, 2rem);
-            width: clamp(90px, 16vw, 160px);
+            top: 2rem;
+            right: 3rem;
+            width: 140px;
             transform: rotate(-15deg);
         }
 
         .eucalyptus.bottom {
-            bottom: clamp(0.8rem, 2vw, 1.5rem);
-            left: clamp(0.5rem, 1.8vw, 1.2rem);
-            width: clamp(90px, 16vw, 160px);
+            bottom: 2.5rem;
+            left: 2rem;
+            width: 120px;
             transform: rotate(165deg);
         }
 
-        /* Main Content Area - 80% */
+        /* Main Content Area */
         .main-area {
             position: relative;
             z-index: 3;
-            flex: 80;
+            flex: 1;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 0 1rem;
+            padding: 2rem 4rem;
         }
 
         .couple-names {
             font-family: 'Cormorant', serif;
-            font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+            font-size: 3.5rem;
             font-weight: 300;
             color: var(--dark);
-            margin-bottom: 0.2rem;
-            line-height: 1.05;
-            letter-spacing: clamp(6px, 2vw, 10px);
+            margin-bottom: 0.5rem;
+            line-height: 1.1;
+            letter-spacing: 12px;
             text-transform: uppercase;
         }
 
         .divider {
             font-family: 'Cormorant', serif;
-            font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+            font-size: 2.5rem;
             color: var(--gold);
-            margin: 0.1rem 0;
+            margin: 0.3rem 0 0.8rem 0;
             font-weight: 300;
         }
 
         .tagline {
             font-family: 'Cormorant', serif;
-            font-size: clamp(0.85rem, 2vw, 1.1rem);
+            font-size: 1.15rem;
             font-weight: 300;
             font-style: italic;
             color: var(--dark);
-            margin: 0.8rem auto 0 auto;
-            line-height: 1.5;
-            max-width: 620px;
+            line-height: 1.7;
+            max-width: 600px;
         }
 
-        /* Bottom Area - 20% */
+        /* Bottom Area */
         .bottom-area {
             position: relative;
             z-index: 3;
-            flex: 20;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding-bottom: clamp(0.5rem, 1.5vw, 1rem);
+            width: 100%;
+            padding: 0 3rem 1rem 3rem;
         }
 
-        /* Locations side by side */
+        /* Locations Row */
         .locations-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: clamp(1rem, 3vw, 2rem);
-            margin-bottom: clamp(0.5rem, 1.5vw, 1rem);
+            gap: 3rem;
+            margin-bottom: 2rem;
         }
 
         .location-item {
             text-align: center;
-            font-size: clamp(0.7rem, 1.6vw, 0.85rem);
-            color: var(--dark);
-            line-height: 1.4;
         }
 
         .location-title {
             font-family: 'Cormorant', serif;
+            font-size: 1.1rem;
             font-weight: 500;
-            margin-bottom: 0.2rem;
-            font-size: clamp(0.8rem, 1.8vw, 0.95rem);
-            letter-spacing: 0.3px;
+            color: var(--dark);
+            margin-bottom: 0.3rem;
+            letter-spacing: 0.5px;
+        }
+
+        .location-date {
+            font-size: 0.95rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            font-weight: 300;
         }
 
         .location-link {
-            color: var(--dark);
+            color: #666;
             text-decoration: underline;
             text-decoration-color: var(--gold);
-            text-underline-offset: 2px;
+            font-size: 0.9rem;
             transition: color 0.3s ease;
             font-weight: 300;
         }
@@ -243,83 +246,138 @@
             color: var(--gold);
         }
 
-        /* Parents Info */
-        .parents-info {
-            font-size: clamp(0.6rem, 1.4vw, 0.7rem);
-            color: #888;
-            text-align: center;
-            font-weight: 300;
-            line-height: 1.4;
+        .location-pin {
+            margin-right: 0.3rem;
         }
 
-        /* Mobile Adjustments */
+        /* Parents Info */
+        .parents-info {
+            font-size: 0.75rem;
+            color: #999;
+            text-align: center;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        /* Responsive - Mobile */
         @media (max-width: 768px) {
             .language-tabs {
-                padding: 0.5rem 0 0 0;
+                padding: 0.6rem 0 0.3rem 0;
             }
 
             .lang-tab {
-                padding: 0.5rem 0.9rem;
+                padding: 0.5rem 1rem;
                 font-size: 0.75rem;
+                letter-spacing: 0.5px;
             }
 
             .flag {
-                font-size: 0.95rem;
+                font-size: 0.9rem;
             }
 
             .invitation-card {
-                padding: 1.2rem 0.9rem;
-            }
-
-            .couple-names {
-                letter-spacing: 4px;
+                padding: 2rem 1.5rem 1.5rem 1.5rem;
             }
 
             .heart-frame {
-                width: 80%;
-                height: 60%;
+                width: 70%;
+                height: 70%;
             }
 
-            .eucalyptus.top,
+            .eucalyptus.top {
+                width: 100px;
+                right: 1.5rem;
+                top: 1.5rem;
+            }
+
             .eucalyptus.bottom {
-                width: clamp(70px, 14vw, 120px);
+                width: 90px;
+                left: 1rem;
+                bottom: 2rem;
             }
 
             .main-area {
-                padding: 0 0.5rem;
+                padding: 1.5rem 2rem;
+            }
+
+            .couple-names {
+                font-size: 2.5rem;
+                letter-spacing: 8px;
+            }
+
+            .divider {
+                font-size: 2rem;
             }
 
             .tagline {
-                line-height: 1.4;
-                margin: 0.6rem auto 0 auto;
+                font-size: 0.95rem;
+                line-height: 1.6;
+                max-width: 100%;
+            }
+
+            .bottom-area {
+                padding: 0 1.5rem 1rem 1.5rem;
             }
 
             .locations-row {
-                gap: 0.8rem;
+                gap: 2rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .location-title {
+                font-size: 1rem;
+            }
+
+            .location-date {
+                font-size: 0.85rem;
+            }
+
+            .location-link {
+                font-size: 0.8rem;
+            }
+
+            .parents-info {
+                font-size: 0.7rem;
             }
         }
 
         @media (max-width: 480px) {
             .lang-tab {
-                padding: 0.45rem 0.7rem;
+                padding: 0.4rem 0.7rem;
                 font-size: 0.7rem;
-                gap: 0.3rem;
-            }
-
-            .flag {
-                font-size: 0.85rem;
             }
 
             .invitation-card {
-                padding: 1rem 0.7rem;
+                padding: 1.5rem 1rem 1rem 1rem;
+            }
+
+            .couple-names {
+                font-size: 2rem;
+                letter-spacing: 6px;
+            }
+
+            .divider {
+                font-size: 1.7rem;
+            }
+
+            .tagline {
+                font-size: 0.88rem;
             }
 
             .locations-row {
-                gap: 0.6rem;
+                gap: 1.5rem;
             }
 
-            .heart-frame {
-                width: 83%;
+            .location-title {
+                font-size: 0.95rem;
+            }
+
+            .eucalyptus.top {
+                width: 80px;
+            }
+
+            .eucalyptus.bottom {
+                width: 75px;
             }
         }
 
@@ -329,12 +387,16 @@
             }
 
             .invitation-card {
-                max-height: 600px;
+                padding: 2rem 1.5rem 1.5rem 1.5rem;
+            }
+
+            .main-area {
+                padding: 1rem 3rem;
             }
 
             .tagline {
-                margin: 0.5rem auto 0 auto;
-                line-height: 1.4;
+                font-size: 1rem;
+                line-height: 1.6;
             }
         }
     </style>
@@ -344,13 +406,13 @@
 
     <!-- Language Tabs -->
     <div class="language-tabs">
-        <button class="lang-tab active" onclick="selectLanguage('tr')" id="tabTr">
+        <button class="lang-tab" onclick="selectLanguage('tr')" id="tabTr">
             <span class="flag">🇹🇷</span> TÜRKÇE
         </button>
         <button class="lang-tab" onclick="selectLanguage('en')" id="tabEn">
             <span class="flag">🇬🇧</span> ENGLISH
         </button>
-        <button class="lang-tab" onclick="selectLanguage('de')" id="tabDe">
+        <button class="lang-tab active" onclick="selectLanguage('de')" id="tabDe">
             <span class="flag">🇩🇪</span> DEUTSCH
         </button>
     </div>
@@ -360,11 +422,10 @@
         <div class="invitation-card">
             <!-- Heart Frame -->
             <div class="heart-frame">
-                <svg viewBox="0 0 500 450" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Heart shape path -->
-                    <path d="M 250 400 C 250 400 80 280 80 180 C 80 120 120 80 170 80 C 200 80 230 95 250 120 C 270 95 300 80 330 80 C 380 80 420 120 420 180 C 420 280 250 400 250 400 Z" 
+                <svg viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 250 450 C 250 450 50 310 50 180 C 50 110 95 60 155 60 C 195 60 230 80 250 115 C 270 80 305 60 345 60 C 405 60 450 110 450 180 C 450 310 250 450 250 450 Z" 
                           stroke="#C9A961" 
-                          stroke-width="2.5" 
+                          stroke-width="2" 
                           fill="none"
                           stroke-linejoin="round"/>
                 </svg>
@@ -399,42 +460,44 @@
                 <ellipse cx="82" cy="138" rx="16" ry="24" fill="#8FA f9A0" opacity="0.7"/>
             </svg>
 
-            <!-- Main Area (80%) -->
+            <!-- Main Area -->
             <div class="main-area">
                 <h1 class="couple-names">
-                    KARDELEN<br>
-                    <span class="divider">&</span><br>
+                    KARDELEN
+                </h1>
+                <div class="divider">&</div>
+                <h1 class="couple-names" style="margin-bottom: 1.2rem;">
                     PETER
                 </h1>
 
                 <p class="tagline" id="tagline"></p>
             </div>
 
-            <!-- Bottom Area (20%) -->
+            <!-- Bottom Area -->
             <div class="bottom-area">
-                <!-- Locations Side by Side -->
+                <!-- Locations -->
                 <div class="locations-row">
                     <div class="location-item">
                         <div class="location-title" id="kinaTitle"></div>
-                        <div id="kinaDate"></div>
+                        <div class="location-date" id="kinaDate"></div>
                         <a href="https://maps.app.goo.gl/z5ibLooEtAcyssDe8" target="_blank" class="location-link">
-                            📍 Arpaköy, Ordu, TR
+                            <span class="location-pin">📍</span><span id="kinaLocation"></span>
                         </a>
                     </div>
 
                     <div class="location-item">
                         <div class="location-title" id="nikahTitle"></div>
-                        <div id="nikahDate"></div>
+                        <div class="location-date" id="nikahDate"></div>
                         <a href="https://maps.app.goo.gl/79G1PJUXN3JbXJi59" target="_blank" class="location-link">
-                            📍 Großgründlach, Nürnberg, DE
+                            <span class="location-pin">📍</span><span id="nikahLocation"></span>
                         </a>
                     </div>
                 </div>
 
                 <!-- Parents Info -->
                 <div class="parents-info">
-                    Kardelen Özyurda • Zinet Özyurda & İsmet Özyurda<br>
-                    Peter Giese • Klaus Giese & Bernadette Giese
+                    Kardelen Özyurda · Zinet Özyurda & İsmet Özyurda<br>
+                    Peter Giese · Klaus Giese & Bernadette Giese
                 </div>
             </div>
         </div>
@@ -443,25 +506,31 @@
     <script>
         const translations = {
             tr: {
-                tagline: "Farklı diller, aynı kalp. 💛 Yollarımız başka yerlerden başladı ama hikâyemiz ortak bir yerde buluştu. Bu özel günde dünyamızdan bir parça olan sizlerle yan yana olmak istiyoruz 🤍",
-                kinaTitle: "Nişan & Kına",
-                kinaDate: "1 Ağustos 2026",
-                nikahTitle: "Resmi Nikah",
-                nikahDate: "4 Eylül 2026, 11:00"
-            },
-            en: {
-                tagline: "Different languages, one shared heart. 💛 Our paths started in different places, but our story became one. Celebrating this moment with people from all over our world means everything to us 🤍",
-                kinaTitle: "Engagement Party",
-                kinaDate: "August 1st, 2026",
-                nikahTitle: "Civil Wedding",
-                nikahDate: "September 4th, 2026, 11:00 AM"
-            },
-            de: {
-                tagline: "Verschiedene Sprachen, ein gemeinsames Herz. 💛 Unsere Wege begannen an unterschiedlichen Orten, doch unsere Geschichte wurde eine. Diesen Moment mit Menschen aus unserer ganzen Welt zu teilen, macht ihn vollkommen 🤍",
+                tagline: "Farklı diller, aynı kalp. Yollarımız başka yerlerden başladı ama hikâyemiz ortak bir yerde buluştu. Bu özel günde dünyamızdan bir parça olan sizlerle yan yana olmak istiyoruz 🤍",
                 kinaTitle: "Verlobungsfeier",
                 kinaDate: "1. August 2026",
+                kinaLocation: "Arpaköy, Ordu, TR",
                 nikahTitle: "Standesamtliche Trauung",
-                nikahDate: "4. September 2026, 11:00 Uhr"
+                nikahDate: "4. September 2026, 11:00 Uhr",
+                nikahLocation: "Großgründlach, Nürnberg, DE"
+            },
+            en: {
+                tagline: "Different languages, one shared heart. Our paths started in different places, but our story became one. Celebrating this moment with people from all over our world means everything to us 🤍",
+                kinaTitle: "Engagement Party",
+                kinaDate: "August 1st, 2026",
+                kinaLocation: "Arpaköy, Ordu, TR",
+                nikahTitle: "Civil Wedding",
+                nikahDate: "September 4th, 2026, 11:00 AM",
+                nikahLocation: "Großgründlach, Nürnberg, DE"
+            },
+            de: {
+                tagline: "Verschiedene Sprachen, ein gemeinsames Herz. Unsere Wege begannen an unterschiedlichen Orten, doch unsere Geschichte wurde eine. Diesen Moment mit Menschen aus unserer ganzen Welt zu teilen, macht ihn vollkommen 🤍",
+                kinaTitle: "Verlobungsfeier",
+                kinaDate: "1. August 2026",
+                kinaLocation: "Arpaköy, Ordu, TR",
+                nikahTitle: "Standesamtliche Trauung",
+                nikahDate: "4. September 2026, 11:00 Uhr",
+                nikahLocation: "Großgründlach, Nürnberg, DE"
             }
         };
 
@@ -477,12 +546,14 @@
             document.getElementById('tagline').textContent = t.tagline;
             document.getElementById('kinaTitle').textContent = t.kinaTitle;
             document.getElementById('kinaDate').textContent = t.kinaDate;
+            document.getElementById('kinaLocation').textContent = t.kinaLocation;
             document.getElementById('nikahTitle').textContent = t.nikahTitle;
             document.getElementById('nikahDate').textContent = t.nikahDate;
+            document.getElementById('nikahLocation').textContent = t.nikahLocation;
         }
 
-        // Initialize with Turkish
-        selectLanguage('tr');
+        // Initialize with German (as shown in screenshot)
+        selectLanguage('de');
     </script>
 </body>
 </html>
