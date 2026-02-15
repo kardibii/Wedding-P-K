@@ -342,18 +342,18 @@
                 <!-- Locations -->
                 <div class="locations-row">
                     <div class="location-item">
-                        <div class="location-title" id="kinaTitle"></div>
-                        <div class="location-date" id="kinaDate"></div>
-                        <a href="https://maps.app.goo.gl/z5ibLooEtAcyssDe8" target="_blank" class="location-link">
-                            <span class="location-pin">📍</span><span id="kinaLocation"></span>
-                        </a>
-                    </div>
-
-                    <div class="location-item">
                         <div class="location-title" id="nikahTitle"></div>
                         <div class="location-date" id="nikahDate"></div>
                         <a href="https://maps.app.goo.gl/79G1PJUXN3JbXJi59" target="_blank" class="location-link">
                             <span class="location-pin">📍</span><span id="nikahLocation"></span>
+                        </a>
+                    </div>
+
+                    <div class="location-item">
+                        <div class="location-title" id="kinaTitle"></div>
+                        <div class="location-date" id="kinaDate"></div>
+                        <a href="https://maps.app.goo.gl/z5ibLooEtAcyssDe8" target="_blank" class="location-link">
+                            <span class="location-pin">📍</span><span id="kinaLocation"></span>
                         </a>
                     </div>
                 </div>
@@ -399,13 +399,8 @@
         };
 
         function selectLanguage(lang) {
-            // Update active tab
-            document.querySelectorAll('.lang-tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
+            document.querySelectorAll('.lang-tab').forEach(tab => tab.classList.remove('active'));
             document.getElementById('tab' + lang.charAt(0).toUpperCase() + lang.slice(1)).classList.add('active');
-
-            // Update content
             const t = translations[lang];
             document.getElementById('tagline').textContent = t.tagline;
             document.getElementById('kinaTitle').textContent = t.kinaTitle;
@@ -416,8 +411,29 @@
             document.getElementById('nikahLocation').textContent = t.nikahLocation;
         }
 
-        // Initialize with Turkish
-        selectLanguage('tr');
+        // Geo-detect country and set language
+        async function detectAndSetLanguage() {
+            try {
+                const res = await fetch('https://ipapi.co/json/');
+                const data = await res.json();
+                const country = data.country_code;
+                if (country === 'DE' || country === 'AT' || country === 'CH') {
+                    selectLanguage('de');
+                } else if (country === 'TR') {
+                    selectLanguage('tr');
+                } else {
+                    selectLanguage('en');
+                }
+            } catch (e) {
+                // Fallback to browser language if geo fails
+                const lang = navigator.language || navigator.userLanguage || 'en';
+                if (lang.startsWith('de')) selectLanguage('de');
+                else if (lang.startsWith('tr')) selectLanguage('tr');
+                else selectLanguage('en');
+            }
+        }
+
+        detectAndSetLanguage();
     </script>
 </body>
 </html>
