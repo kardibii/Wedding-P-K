@@ -50,7 +50,7 @@
             display: inline-flex;
             flex-direction: column;
             align-items: center;
-            padding: 3.2rem 5rem;
+            padding: 3.65rem 5.45rem;
         }
 
         /* Heart Frame - absolutely positioned inside names-wrapper */
@@ -149,35 +149,36 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 2rem 4rem;
+            padding: 1rem 2rem;
         }
 
         .couple-names {
             font-family: 'Alex Brush', cursive;
-            font-size: 4.5rem;
+            font-size: clamp(2.55rem, 4.45rem, 3.2rem);
             font-weight: 400;
             color: var(--blue);
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.1rem;
             line-height: 1.1;
         }
 
         .divider {
             font-family: 'Cormorant', serif;
-            font-size: 3rem;
+            font-size: clamp(2.15rem, 3.45rem, 2.55rem);
             color: var(--blue);
-            margin: 0.5rem 0;
+            margin: 0.2rem 0;
             font-weight: 300;
         }
 
         .tagline {
             font-family: 'Cormorant', serif;
-            font-size: 1.15rem;
+            font-size: clamp(1.24rem, 1.8vw, 1.37rem);
             font-weight: 300;
             font-style: italic;
             color: var(--dark-blue);
-            line-height: 1.7;
-            max-width: 600px;
-            margin-top: 1.5rem;
+            line-height: 1.65;
+            max-width: 480px;
+            margin-top: 0.9rem;
+            text-align: center;
         }
 
         /* Bottom Area */
@@ -185,44 +186,54 @@
             position: relative;
             z-index: 3;
             width: 100%;
-            padding: 0 3rem 1rem 3rem;
+            padding: 0 2rem 0.8rem 2rem;
+            margin-bottom: 0.3rem;
         }
 
         /* Locations Row */
         .locations-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 2rem;
+            gap: 1.5rem;
+            margin-bottom: 0.4rem;
+            padding: 0.5rem 0;
         }
 
         .location-item {
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0.35rem 0;
+            gap: 0.2rem;
         }
 
         .location-title {
             font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
-            font-weight: 500;
+            font-size: clamp(0.97rem, 1.55vw, 1.1rem);
+            font-weight: 600;
             color: var(--blue);
-            margin-bottom: 0.3rem;
-            letter-spacing: 1px;
+            margin-bottom: 0.25rem;
+            letter-spacing: 0.3px;
+            text-align: center;
         }
 
         .location-date {
-            font-size: 0.95rem;
+            font-size: clamp(0.94rem, 1.5vw, 1.06rem);
             color: var(--blue);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
             font-weight: 300;
+            text-align: center;
         }
 
         .location-link {
             color: var(--light-blue);
             text-decoration: underline;
             text-decoration-color: var(--blue);
-            font-size: 0.9rem;
+            font-size: clamp(0.91rem, 1.45vw, 1.02rem);
             transition: color 0.3s ease;
             font-weight: 300;
+            text-align: center;
         }
 
         .location-link:hover {
@@ -230,125 +241,59 @@
         }
 
         .location-pin {
-            margin-right: 0.3rem;
+            margin-right: 0.15rem;
         }
 
         /* Parents Info */
         .parents-info {
-            font-size: 0.75rem;
+            font-size: clamp(0.87rem, 1.35vw, 0.97rem);
             color: var(--light-blue);
             text-align: center;
             font-weight: 300;
             line-height: 1.6;
+            padding-top: 0.6rem;
         }
 
         /* Responsive - Mobile */
         @media (max-width: 768px) {
-            .language-tabs {
-                padding: 0.6rem 0 0.3rem 0;
-            }
-
-            .lang-tab {
-                padding: 0.5rem 1rem;
-                font-size: 0.75rem;
-                letter-spacing: 0.5px;
-            }
-
-            .flag {
-                font-size: 0.9rem;
-            }
-
-            .invitation-card {
-                padding: 2rem 1.5rem 1.5rem 1.5rem;
-            }
-
-            .names-wrapper {
-                padding: 2.5rem 3.8rem;
-            }
-
-            .main-area {
-                padding: 1.5rem 2rem;
-            }
-
-            .couple-names {
-                font-size: 3.2rem;
-            }
-
-            .divider {
-                font-size: 2.5rem;
-            }
-
-            .date-info {
-                font-size: 1rem;
-                margin-top: 1.5rem;
-            }
-
-            .tagline {
-                font-size: 0.95rem;
-                line-height: 1.6;
-                max-width: 100%;
-                margin-top: 1.5rem;
-            }
-
-            .bottom-area {
-                padding: 0 1.5rem 1rem 1.5rem;
-            }
-
-            .locations-row {
-                gap: 2rem;
-                margin-bottom: 1.5rem;
-            }
-
-            .location-title {
-                font-size: 0.95rem;
-            }
-
-            .location-date {
-                font-size: 0.85rem;
-            }
-
-            .location-link {
-                font-size: 0.8rem;
-            }
-
-            .parents-info {
-                font-size: 0.7rem;
-            }
+            .language-tabs { padding: 0.5rem 0 0.3rem 0; }
+            .lang-tab { padding: 0.45rem 0.9rem; font-size: 0.72rem; letter-spacing: 0.4px; }
+            .flag { font-size: 0.88rem; }
+            .invitation-card { padding: 1.5rem 1rem 1rem 1rem; }
+            .names-wrapper { padding: 3.65rem 5.45rem; }
+            .main-area { padding: 0.5rem 1rem; align-items: center; }
+            .couple-names { font-size: clamp(2.55rem, 6.5vw, 3.2rem); }
+            .divider { font-size: clamp(2.15rem, 5vw, 2.65rem); }
+            .tagline { font-size: clamp(1.24rem, 2.5vw, 1.38rem); max-width: 88%; margin-top: 0.6rem; text-align: center; }
+            .bottom-area { padding: 0 1rem 0.3rem 1rem; margin-bottom: 0.15rem; }
+            .locations-row { gap: 0.8rem; margin-bottom: 0.2rem; padding: 0.4rem 0; }
+            .location-item { align-items: center; padding: 0.3rem 0; gap: 0.18rem; }
+            .location-title { font-size: clamp(0.9rem, 2vw, 1.02rem); text-align: center; }
+            .location-date { font-size: clamp(0.87rem, 1.9vw, 0.99rem); text-align: center; }
+            .location-link { font-size: clamp(0.84rem, 1.8vw, 0.96rem); text-align: center; }
+            .parents-info { font-size: clamp(0.8rem, 1.7vw, 0.9rem); text-align: center; padding-top: 0.5rem; }
         }
 
         @media (max-width: 480px) {
-            .lang-tab {
-                padding: 0.4rem 0.7rem;
-                font-size: 0.7rem;
-            }
-
-            .invitation-card {
-                padding: 1.5rem 1rem 1rem 1rem;
-            }
-
-            .names-wrapper {
-                padding: 2rem 3.2rem;
-            }
+            .lang-tab { padding: 0.38rem 0.65rem; font-size: 0.68rem; }
+            .invitation-card { padding: 1.2rem 0.8rem 0.8rem 0.8rem; }
+            .names-wrapper { padding: 3rem 4.5rem; }
+            .couple-names { font-size: clamp(2.2rem, 7.5vw, 2.8rem); }
+            .divider { font-size: clamp(1.8rem, 5.5vw, 2.25rem); }
+            .tagline { font-size: clamp(1.16rem, 2.8vw, 1.3rem); }
+            .locations-row { gap: 0.6rem; }
+            .location-title { font-size: clamp(0.86rem, 2.2vw, 0.98rem); }
+            .location-date { font-size: clamp(0.83rem, 2.1vw, 0.94rem); }
+            .location-link { font-size: clamp(0.8rem, 2vw, 0.9rem); }
+            .parents-info { font-size: clamp(0.76rem, 1.9vw, 0.86rem); }
         }
 
         @media (max-height: 700px) {
-            .main-content {
-                padding: 0.5rem;
-            }
-
-            .invitation-card {
-                padding: 2rem 1.5rem 1.5rem 1.5rem;
-            }
-
-            .main-area {
-                padding: 1rem 3rem;
-            }
-
-            .tagline {
-                font-size: 1rem;
-                line-height: 1.6;
-                margin-top: 1.5rem;
-            }
+            .main-content { padding: 0.4rem; }
+            .invitation-card { padding: 1.2rem 1rem 0.6rem 1rem; }
+            .main-area { padding: 0.4rem 1rem; }
+            .tagline { margin-top: 0.5rem; line-height: 1.55; }
+            .bottom-area { padding: 0 1rem 0.3rem 1rem; }
         }
     </style>
 </head>
@@ -426,7 +371,7 @@
         const translations = {
             tr: {
                 tagline: "Farklı diller, aynı kalp. Yollarımız başka yerlerden başladı ama hikâyemiz ortak bir yerde buluştu. Bu özel günde dünyamızdan bir parça olan sizlerle yan yana olmak istiyoruz 🤍",
-                kinaTitle: "Nişan & Kına",
+                kinaTitle: "Düğün",
                 kinaDate: "1 Ağustos 2026, saat 18:00",
                 kinaLocation: "Arpaköy, Ordu, TR",
                 nikahTitle: "Resmi Nikah",
@@ -435,7 +380,7 @@
             },
             en: {
                 tagline: "Different languages, one shared heart. Our paths started in different places, but our story became one. Celebrating this moment with people from all over our world means everything to us 🤍",
-                kinaTitle: "Engagement Party",
+                kinaTitle: "Wedding Party",
                 kinaDate: "August 1st, 2026, at 6:00 PM",
                 kinaLocation: "Arpaköy, Ordu, TR",
                 nikahTitle: "Civil Wedding",
@@ -444,7 +389,7 @@
             },
             de: {
                 tagline: "Verschiedene Sprachen, ein gemeinsames Herz. Unsere Wege begannen an unterschiedlichen Orten, doch unsere Geschichte wurde eine. Diesen Moment mit Menschen aus unserer ganzen Welt zu teilen, macht ihn vollkommen 🤍",
-                kinaTitle: "Verlobungsfeier",
+                kinaTitle: "Hochzeitsfeier",
                 kinaDate: "1. August 2026, um 18:00 Uhr",
                 kinaLocation: "Arpaköy, Ordu, TR",
                 nikahTitle: "Standesamtliche Trauung",
