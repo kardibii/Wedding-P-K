@@ -184,6 +184,35 @@
             text-align: center;
         }
 
+        /* RSVP Button */
+        .rsvp-button {
+            margin-top: 1.5rem;
+            padding: 0.7rem 2.2rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: white;
+            background: var(--blue);
+            border: 2px solid var(--blue);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(123, 143, 163, 0.2);
+        }
+
+        .rsvp-button:hover {
+            background: white;
+            color: var(--blue);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(123, 143, 163, 0.3);
+        }
+
+        .rsvp-button:active {
+            transform: translateY(0);
+        }
+
         /* Bottom Area */
         .bottom-area {
             position: relative;
@@ -278,6 +307,12 @@
                 text-align: center;
                 line-height: 1.55;
             }
+            .rsvp-button {
+                margin-top: 1.2rem;
+                padding: 0.6rem 1.8rem;
+                font-size: 0.82rem;
+                letter-spacing: 1.2px;
+            }
             .bottom-area { padding: 0 0.6rem 0.3rem 0.6rem; margin-top: -0.6rem; }
             .locations-row { 
                 display: grid;
@@ -325,6 +360,12 @@
                 font-size: clamp(1.28rem, 2.9vw, 1.4rem);
                 max-width: 97%;
                 line-height: 1.5;
+            }
+            .rsvp-button {
+                margin-top: 1rem;
+                padding: 0.55rem 1.6rem;
+                font-size: 0.78rem;
+                letter-spacing: 1px;
             }
             .bottom-area { margin-top: -0.5rem; padding: 0 0.4rem 0.3rem 0.4rem; }
             .locations-row { gap: 0.6rem; }
@@ -382,6 +423,11 @@
                 </div>
 
                 <p class="tagline" id="tagline"></p>
+                
+                <!-- RSVP Button -->
+                <button class="rsvp-button" onclick="openRSVP()">
+                    <span id="rsvpText">Yanıtla</span>
+                </button>
             </div>
 
             <!-- Bottom Area -->
@@ -414,6 +460,7 @@
         const translations = {
             tr: {
                 tagline: "Farklı diller, ortak bir kalp... Yollarımız ayrı yerlerde başladı ama hikayemiz bir oldu. Bu özel anı sizlerle paylaşmak istiyoruz 🤍",
+                rsvp: "Yanıtla",
                 kinaTitle: "Düğün",
                 kinaDate: "1 Ağustos 2026, saat 16:00",
                 kinaLocation: "Arpaköy, Ordu, TR",
@@ -423,6 +470,7 @@
             },
             en: {
                 tagline: "Different languages, one shared heart... Our paths began in different places, but our story became one. We would like to share this special moment with you 🤍",
+                rsvp: "Reply",
                 kinaTitle: "Wedding Party",
                 kinaDate: "August 1st, 2026, at 4:00 PM",
                 kinaLocation: "Arpaköy, Ordu, TR",
@@ -432,6 +480,7 @@
             },
             de: {
                 tagline: "Verschiedene Sprachen, ein gemeinsames Herz... Unsere Wege begannen an unterschiedlichen Orten, doch unsere Geschichte wurde eins. Diesen besonderen Moment möchten wir mit euch teilen 🤍",
+                rsvp: "Antworten",
                 kinaTitle: "Hochzeitsfeier",
                 kinaDate: "1. August 2026, um 16:00 Uhr",
                 kinaLocation: "Arpaköy, Ordu, TR",
@@ -441,17 +490,31 @@
             }
         };
 
+        const rsvpLinks = {
+            tr: 'https://docs.google.com/forms/d/e/1FAIpQLScM1N2-KaGClhuz3FjcGy6DmlXsXaaZDyK8bxSQ0LvpNkNNqA/viewform',
+            en: 'https://docs.google.com/forms/d/e/1FAIpQLSeD0bWsek5GXCVqFa1L1EP1q6ZYNoLNMm6BiVqi09tQr_ewhg/viewform',
+            de: 'https://docs.google.com/forms/d/e/1FAIpQLScNKwJjbdkc4jK1_GR8nltEcwUIYDSEJUPyoUyQQnvPOS9rkg/viewform'
+        };
+
+        let currentLanguage = 'tr';
+
         function selectLanguage(lang) {
+            currentLanguage = lang;
             document.querySelectorAll('.lang-tab').forEach(tab => tab.classList.remove('active'));
             document.getElementById('tab' + lang.charAt(0).toUpperCase() + lang.slice(1)).classList.add('active');
             const t = translations[lang];
             document.getElementById('tagline').textContent = t.tagline;
+            document.getElementById('rsvpText').textContent = t.rsvp;
             document.getElementById('kinaTitle').textContent = t.kinaTitle;
             document.getElementById('kinaDate').textContent = t.kinaDate;
             document.getElementById('kinaLocation').textContent = t.kinaLocation;
             document.getElementById('nikahTitle').textContent = t.nikahTitle;
             document.getElementById('nikahDate').textContent = t.nikahDate;
             document.getElementById('nikahLocation').textContent = t.nikahLocation;
+        }
+
+        function openRSVP() {
+            window.open(rsvpLinks[currentLanguage], '_blank');
         }
 
         // Geo-detect country and set language
